@@ -40,6 +40,7 @@ export class VoicesService {
       throw new NotFoundException(`Voice with ID ${id} not found`);
     }
 
-    return await this.voiceRepository.remove(voice);
+    await this.voiceRepository.remove(voice);
+    return id
   }
 }

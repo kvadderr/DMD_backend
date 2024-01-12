@@ -38,6 +38,7 @@ export class CategoryService {
       throw new NotFoundException(`Voice with ID ${id} not found`);
     }
 
-    return await this.categoryRepository.remove(voice);
+    await this.categoryRepository.remove(voice);
+    return id
   }
 }
