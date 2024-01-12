@@ -36,6 +36,7 @@ export class AuthController {
             existingUser = await this.userService.findUserWithPassword(login);
             console.log(existingUser)
             isValid = await bcrypt.compare(loginPassword, existingUser.password);
+            if (!isValid) { throw new ForbiddenException('Username or password is invalid') }
         } catch (error) {
             throw new ForbiddenException('Username or password is invalid');
         }

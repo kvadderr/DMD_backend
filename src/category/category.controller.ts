@@ -8,7 +8,6 @@ import { UserRole } from 'src/constants';
 export class CategoryController {
   constructor(private readonly categoryService: CategoryService) {}
 
-  @Roles(UserRole.ROOT)
   @Post()
   create(@Body() createCategoryDto: CreateCategoryDto) {
     return this.categoryService.create(createCategoryDto);
@@ -19,13 +18,12 @@ export class CategoryController {
     return this.categoryService.findAll();
   }
 
-  @Roles(UserRole.ROOT)
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateCategoryDto: UpdateCategoryDto) {
+    console.log(updateCategoryDto)
     return this.categoryService.update(+id, updateCategoryDto);
   }
 
-  @Roles(UserRole.ROOT)
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.categoryService.remove(+id);

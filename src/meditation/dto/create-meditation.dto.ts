@@ -13,7 +13,5 @@ export class CreateMeditationDto {
   @ApiProperty()
   isSubscribed: boolean;
   @ApiProperty()
-  audioLenght: number;
-  @ApiProperty()
-  photoId: string;
+  photo: string;
 }

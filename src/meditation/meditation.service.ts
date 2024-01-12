@@ -13,19 +13,21 @@ export class MeditationService {
   ) { }
 
   create(createMeditationDto: CreateMeditationDto) {
-    console.log(createMeditationDto)
     const meditation = this.meditationRepository.create(createMeditationDto);
-    return this.meditationRepository.save(createMeditationDto);
+    console.log(meditation)
+    return this.meditationRepository.save(meditation);
   }
 
   findAll() {
     return this.meditationRepository.find({
-      relations: ['categories', 'audios']
+      relations: ['categories', 'audios', 'audios.voice']
     });
   }
 
   update(id: number, updateMeditationDto: UpdateMeditationDto) {
-    return `This action updates a #${id} meditation`;
+    const meditation = this.meditationRepository.create(updateMeditationDto);
+    meditation.id = id;
+    return this.meditationRepository.save(meditation);
   }
 
 }

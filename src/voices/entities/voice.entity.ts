@@ -28,7 +28,7 @@ export class Voice {
   description: string;
 
   @ApiProperty()
-  @OneToMany(() => Audio, (audio) => audio.meditation)
+  @OneToMany(() => Audio, (audio) => audio.voice)
   audios: Audio[];
 
 }

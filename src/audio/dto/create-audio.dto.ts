@@ -6,4 +6,9 @@ export class CreateAudioDto {
   @ApiProperty()
   link: string;
 
+  @ApiProperty()
+  meditation_id: number;
+
+  @ApiProperty()
+  voice_id: number;
 }

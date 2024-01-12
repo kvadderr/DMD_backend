@@ -42,10 +42,6 @@ export class Meditation {
 
   @ApiProperty()
   @Column()
-  audioLenght: number;
-
-  @ApiProperty()
-  @Column()
   photo: string;
 
   @OneToMany(() => Audio, (audio) => audio.meditation)

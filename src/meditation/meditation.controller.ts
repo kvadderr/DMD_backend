@@ -9,9 +9,8 @@ import { UserRole } from 'src/constants';
 @ApiTags('Медитация')
 @Controller('meditation')
 export class MeditationController {
-  constructor(private readonly meditationService: MeditationService) {}
+  constructor(private readonly meditationService: MeditationService) {} 
 
-  @Roles(UserRole.ROOT)
   @ApiOperation({ summary: "Создать медитацию" })
   @ApiResponse({ status: 201 })
   @Post()
@@ -26,7 +25,6 @@ export class MeditationController {
     return this.meditationService.findAll();
   }
 
-  @Roles(UserRole.ROOT)
   @ApiOperation({ summary: "Обновить медитацию. Доступно только администратору" })
   @ApiResponse({ status: 200 })
   @Patch(':id')

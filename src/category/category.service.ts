@@ -19,9 +19,7 @@ export class CategoryService {
   }
 
   findAll(): Promise<Category[]> {
-    return this.categoryRepository.find({
-      relations: ['meditations']
-    });
+    return this.categoryRepository.find();
   }
 
   update(id: number, updateCategoryDto: UpdateCategoryDto) {
