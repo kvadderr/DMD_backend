@@ -13,9 +13,10 @@ export class AudioService {
     private readonly audioRepository: Repository<Audio>
   ) { }
 
-  create(createAudioDto: CreateAudioDto) {
+  async create(createAudioDto: CreateAudioDto) {
     const audio = this.audioRepository.create(createAudioDto);
-    return this.audioRepository.save(audio);
+    await this.audioRepository.save(audio);
+    return this.audioRepository.findOne({ where: { id: audio.id }, relations: ['voice'] });
   }
 
   update(id: number, updateAudioDto: UpdateAudioDto) {
