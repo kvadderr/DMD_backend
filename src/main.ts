@@ -7,7 +7,7 @@ async function bootstrap() {
 
   app.enableCors({
     allowedHeaders: ['content-type, Authorization'],
-    origin: 'http://192.168.229.164:5173',
+    origin: 'http://78.155.194.209:5173',
     credentials: true,
   });
   const config = new DocumentBuilder()
