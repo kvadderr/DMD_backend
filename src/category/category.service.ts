@@ -19,7 +19,9 @@ export class CategoryService {
   }
 
   findAll(): Promise<Category[]> {
-    return this.categoryRepository.find();
+    return this.categoryRepository.find({
+      relations: ['meditation', 'audios', 'audios.voice']
+    });
   }
 
   update(id: number, updateCategoryDto: UpdateCategoryDto) {
