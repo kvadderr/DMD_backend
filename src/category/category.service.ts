@@ -20,7 +20,7 @@ export class CategoryService {
 
   findAll(): Promise<Category[]> {
     return this.categoryRepository.find({
-      relations: ['meditations']
+      relations: ['meditations', 'meditations.audios', 'meditations.audios.voice']
     });
   }
 
