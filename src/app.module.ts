@@ -36,7 +36,7 @@ import { SoundModule } from './sound/sound.module';
       type: 'postgres',
       host: 'localhost',
       port: 5432,
-      password: '',
+      password: 'Zsxdcf123',
       username: 'postgres',
       entities: [
         User,
