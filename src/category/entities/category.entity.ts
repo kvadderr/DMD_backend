@@ -17,6 +17,9 @@ export class Category {
   @Column()
   name: string;
 
+  @Column()
+  description: string;
+
   @ManyToMany(() => Meditation, meditation => meditation.categories)
   @JoinTable()
   meditations: Meditation[];

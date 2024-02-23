@@ -14,6 +14,8 @@ import { Meditation } from './meditation/entities/meditation.entity';
 import { Category } from './category/entities/category.entity';
 import { Voice } from './voices/entities/voice.entity';
 import { Audio } from './audio/entities/audio.entity';
+import { Slogan } from './slogan/entities/slogan.entity';
+import { Sound } from './sound/entities/sound.entity';
 
 import { AuthMiddleware } from './auth/middleware/auth.middleware';
 import { UsersModule } from './user/user.module';
@@ -21,6 +23,8 @@ import { MeditationModule } from './meditation/meditation.module';
 import { CategoryModule } from './category/category.module';
 import { VoicesModule } from './voices/voices.module';
 import { AudioModule } from './audio/audio.module';
+import { SloganModule } from './slogan/slogan.module';
+import { SoundModule } from './sound/sound.module';
 
 @Module({
   imports: [
@@ -32,14 +36,16 @@ import { AudioModule } from './audio/audio.module';
       type: 'postgres',
       host: 'localhost',
       port: 5432,
-      password: 'Zsxdcf123',
+      password: '',
       username: 'postgres',
       entities: [
         User,
         Meditation,
         Category,
         Audio,
-        Voice
+        Voice,
+        Slogan,
+        Sound
       ],
       database: 'dmd',
       synchronize: true,
@@ -49,7 +55,9 @@ import { AudioModule } from './audio/audio.module';
     MeditationModule,
     CategoryModule,
     VoicesModule,
-    AudioModule],
+    AudioModule,
+    SloganModule,
+    SoundModule],
   controllers: [],
   providers: [{
     provide: APP_GUARD,
