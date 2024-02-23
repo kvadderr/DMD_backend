@@ -17,7 +17,7 @@ export class Category {
   @Column()
   name: string;
 
-  @Column()
+  @Column({nullable: true})
   description: string;
 
   @ManyToMany(() => Meditation, meditation => meditation.categories)
