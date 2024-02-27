@@ -24,7 +24,7 @@ export class SloganService {
   }
 
   async findOne(): Promise<Slogan> {
-    return await this.sloganRepository.query('SELECT * FROM slogans ORDER BY RANDOM() LIMIT 1');
+    return await this.sloganRepository.query('SELECT * FROM slogan ORDER BY RANDOM() LIMIT 1');
   }
 
   update(id: number, updateSloganDto: UpdateSloganDto) {
