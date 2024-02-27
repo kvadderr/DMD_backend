@@ -17,7 +17,7 @@ export class SloganController {
     return this.sloganService.findAll();
   }
 
-  @Get()
+  @Get('/select')
   findOne() {
     return this.sloganService.findOne();
   }
