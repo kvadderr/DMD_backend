@@ -18,6 +18,9 @@ export class Audio {
   @Column()
   link: string;
 
+  @Column()
+  duration: number;
+
   @Column({ name: 'meditation_id' })
   meditation_id: number
 
