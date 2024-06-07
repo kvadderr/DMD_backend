@@ -25,6 +25,8 @@ import { VoicesModule } from './voices/voices.module';
 import { AudioModule } from './audio/audio.module';
 import { SloganModule } from './slogan/slogan.module';
 import { SoundModule } from './sound/sound.module';
+import { OrdersModule } from './orders/orders.module';
+import { Order } from './orders/entities/order.entity';
 
 @Module({
   imports: [
@@ -45,7 +47,8 @@ import { SoundModule } from './sound/sound.module';
         Audio,
         Voice,
         Slogan,
-        Sound
+        Sound,
+        Order
       ],
       database: 'dmd',
       synchronize: true,
@@ -57,6 +60,7 @@ import { SoundModule } from './sound/sound.module';
     VoicesModule,
     AudioModule,
     SloganModule,
+    OrdersModule,
     SoundModule],
   controllers: [],
   providers: [{

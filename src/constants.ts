@@ -14,8 +14,15 @@ enum Lang {
   EN = 'en'
 }
 
+enum OrderStatus {
+  WAITING = 'waiting',
+  SUCCESS = 'success',
+  CANCELED = 'canceled'
+}
+
 export {
   Gender,
   UserRole,
-  Lang
+  Lang,
+  OrderStatus
 }
