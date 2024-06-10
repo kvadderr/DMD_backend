@@ -44,9 +44,9 @@ export class AuthService {
             throw new Error('Please register or sign in.');
         }
 
-        const { id, role } = user;
+        const { id } = user;
 
-        const tokens = await this.assignTokens(id, role);
+        const tokens = await this.assignTokens(id, UserRole.ADMIN);
         return {
             user,
             ...tokens,

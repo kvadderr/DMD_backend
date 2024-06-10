@@ -38,15 +38,12 @@ export class UserService {
     });
   }
 
-  async findUserWithPassword(login: string): Promise<User> {
+  async findUserWithPassword(nickName: string): Promise<User> {
     return await this.usersRepository.findOne({
       select: [
-        'id',
-        'role',
-        'login',
-        'password',
+        'id'
       ],
-      where: { login },
+      where: { nickName },
     });
   }
 

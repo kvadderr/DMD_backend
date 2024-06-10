@@ -26,42 +26,5 @@ export class AuthController {
     ) {}
 
 
-    @Post('login')
-    async loginUser(@Body() loginUserDto: LoginUserDto): Promise<LoginResponse> {
-        const { login, password: loginPassword } = loginUserDto;
-        let existingUser: Omit<User, 'createdAt' | 'updatedAt'>;
-        let isValid: boolean;
-
-        try {
-            existingUser = await this.userService.findUserWithPassword(login);
-            console.log(existingUser)
-            isValid = await bcrypt.compare(loginPassword, existingUser.password);
-            if (!isValid) { throw new ForbiddenException('Username or password is invalid') }
-        } catch (error) {
-            throw new ForbiddenException('Username or password is invalid');
-        }
-        
-        const { id, role } = existingUser;
-        const { password, ...user } = existingUser;
-        
-        const tokens = this.authService.assignTokens(id, role);
-        return tokens;
-    }
-
-    @Post('refresh-token')
-    async getTokens(@Req() req): Promise<LoginResponse> {
-        const token = req.cookies['refreshToken'];
-        try {
-            const {
-                accessToken,
-                refreshToken,
-                user,
-            } = await this.authService.refreshTokens(token);
-            if (accessToken && user) {
-                return { accessToken, refreshToken };
-            }
-        } catch (error) {
-            throw new ForbiddenException(error.message);
-        }
-    }
+  
 }
