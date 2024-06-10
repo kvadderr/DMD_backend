@@ -37,9 +37,9 @@ export class UserController {
   }
 
   @Get('/me')
-  async getMe(@Req() req): Promise<User> {
+  async getMe(@Param('id') id: string) {
     try {
-      return req.user;
+      return this.userService.findOneById(id)
     } catch (error) {
       throw new NotFoundException(`Error`);
     }

@@ -22,7 +22,7 @@ export class OrdersService {
       TerminalKey: process.env.TINKOFF_KEY,
       Amount: order.amount,
       OrderId: order.id,
-      Description: "Покупка на сайте gamemoney.ru",
+      Description: "Активация подписки DMD",
       DATA: {
         YandexPayWeb: true
       }
