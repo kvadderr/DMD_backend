@@ -15,4 +15,5 @@ export class PaymentData {
   Description: string
   DATA: any
   Token?: string
+  Recurrent: string
 }

@@ -25,7 +25,8 @@ export class OrdersService {
       Description: "Активация подписки DMD",
       DATA: {
         YandexPayWeb: true
-      }
+      },
+      Recurrent: 'Y'
     }
     const token = await this.createHash(paymentData);
     paymentData.Token = token;
