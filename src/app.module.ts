@@ -27,6 +27,7 @@ import { SloganModule } from './slogan/slogan.module';
 import { SoundModule } from './sound/sound.module';
 import { OrdersModule } from './orders/orders.module';
 import { Order } from './orders/entities/order.entity';
+import { StatisticModule } from './statistic/statistic.module';
 
 @Module({
   imports: [
@@ -61,7 +62,8 @@ import { Order } from './orders/entities/order.entity';
     AudioModule,
     SloganModule,
     OrdersModule,
-    SoundModule],
+    SoundModule,
+    StatisticModule],
   controllers: [],
   providers: [{
     provide: APP_GUARD,

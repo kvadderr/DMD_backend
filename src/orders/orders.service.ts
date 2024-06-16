@@ -83,23 +83,10 @@ export class OrdersService {
       return true
     } else return false
   }
-
-
-  findOne(user_accessToken: string) {
-    //return this.orderRepository.find({ where: { user_accessToken } });
-  }
-
-  findDataOne(id: string) {
-    //return this.orderRepository.findOne({ where: { id } });
-  }
-
   
 
   update(id: number, updateOrderDto: UpdateOrderDto) {
     return `This action updates a #${id} order`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} order`;
-  }
 }

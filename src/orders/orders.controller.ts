@@ -12,6 +12,11 @@ export class OrdersController {
     return this.ordersService.create(createOrderDto);
   }
 
+  @Post('/status')
+  status(@Body() data: any) {
+    console.log(data)
+  }
+
   @Get('/all')
   findAll() {
     return this.ordersService.findAll();
@@ -38,23 +43,9 @@ export class OrdersController {
     return this.ordersService.findAllCount();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.ordersService.findOne(id);
-  }
-
-  @Get('/data/:id')
-  findDataOne(@Param('id') id: string) {
-    return this.ordersService.findDataOne(id);
-  }
-
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateOrderDto: UpdateOrderDto) {
     return this.ordersService.update(+id, updateOrderDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.ordersService.remove(+id);
-  }
 }

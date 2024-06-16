@@ -2,12 +2,9 @@ import {
   Entity,
   Column,
   CreateDateColumn,
-  PrimaryGeneratedColumn,
   Index,
   PrimaryColumn
 } from 'typeorm';
-
-import { UserRole, Gender } from 'src/constants';
 
 @Entity('user')
 export class User {
@@ -18,6 +15,9 @@ export class User {
 
   @Column({nullable: true})
   nickName: string;
+
+  @Column({nullable: true})
+  avatar: string;
 
   @CreateDateColumn({nullable: true})
   createdAt: Date;
