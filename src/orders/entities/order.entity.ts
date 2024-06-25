@@ -1,28 +1,25 @@
-import { Entity, JoinColumn, Column, PrimaryColumn, OneToOne, ManyToOne, OneToMany } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 import { AppEntity } from 'src/base/BaseEntity';
 
 @Entity()
 export class Order extends AppEntity {
 
+  @PrimaryGeneratedColumn()
+  id: number;
+
   @Column()
   amount: number;
 
-  @Column({ nullable: true })
-  paymentURL: string;
+  @Column()
+  paymentType: number;
 
   @Column({ nullable: true })
-  paymentType: string;
-
-  @Column({ nullable: true })
-  promocode: string;
-
-  @Column({ nullable: true })
-  login: string;
+  userID: string;
 
   @Column({ default: "WAITING" })
   status: string;
 
   @Column({ nullable: true })
-  email: string;
+  rebillId: number;
 
 }

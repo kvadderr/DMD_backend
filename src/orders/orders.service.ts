@@ -38,6 +38,29 @@ export class OrdersService {
     return response.data
   }
 
+  async makeRecurrentPayment(orderId: number, amount: number, rebillId: number) {
+    const paymentData = {
+      TerminalKey: process.env.TINKOFF_KEY,
+      Amount: amount,
+      OrderId: orderId,
+      RebillId: rebillId,
+      Token: null
+    };
+    const token = await this.createHash(paymentData);
+    paymentData.Token = token;
+    const response = await axios.post(process.env.INIT_PAYMENT, paymentData, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    return response.data;
+  }
+
+   // Метод для получения всех активных подписок
+   async getActiveSubscriptions() {
+    return this.orderRepository.find({ where: { status: OrderStatus.SUCCESS } });
+  }
+
   async createHash(data: any) {
     delete data.DATA;
     const dataWithPassword = {
@@ -86,8 +109,14 @@ export class OrdersService {
   }
   
 
-  update(id: number, updateOrderDto: UpdateOrderDto) {
-    return `This action updates a #${id} order`;
+  async updateRebill(id: number, updateOrderDto: UpdateOrderDto) {
+    const order = await this.orderRepository.findOne({where: {id}})
+    order.rebillId = updateOrderDto.rebillId;
+    return await this.orderRepository.save(order);
+  }
+
+  async update(id: number, updateOrderDto: UpdateOrderDto) {
+    return ""
   }
 
 }

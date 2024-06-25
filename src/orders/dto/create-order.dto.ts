@@ -1,11 +1,10 @@
 export class CreateOrderDto {
   amount: number;
+  userID: string;
   paymentURL?: string;
-  paymentType?: string;
-  login?: string;
-  user_accessToken?: string;
-  promocode?: string;
-  email?: string;
+  paymentType?: number;
+  status?:string;
+  rebillId?: number;
 }
 
 export class PaymentData {
