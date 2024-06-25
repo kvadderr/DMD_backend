@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Req, NotFoundException } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Query, NotFoundException } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -37,7 +37,7 @@ export class UserController {
   }
 
   @Get('/me')
-  async getMe(@Param('id') id: string) {
+  async getMe(@Query('id') id: string) {
     try {
       return this.userService.findOneById(id)
     } catch (error) {
