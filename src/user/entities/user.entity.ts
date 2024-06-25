@@ -25,4 +25,10 @@ export class User {
   @Column({default: false})
   isSubscribe: boolean;
 
+  @Column({default: 0})
+  countSessions: number;
+
+  @Column({default: 0})
+  countMinutes: number;
+
 }
