@@ -2,7 +2,6 @@ export class CreateOrderDto {
   amount: number;
   userID: string;
   paymentURL?: string;
-  paymentType?: number;
   status?:string;
   rebillId?: number;
 }

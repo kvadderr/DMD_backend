@@ -96,19 +96,6 @@ export class OrdersService {
     return this.orderRepository.count({ where: { status: OrderStatus.SUCCESS } });
   }
 
-  async checkLogin(login: string) {
-    const response = await axios.get('http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=EAEE8A7CF587F7DDFA25DE9152C514BA&vanityurl=' + login, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    console.log(response)
-    if (response?.data.response.success === 1) {
-      return true
-    } else return false
-  }
-  
-
   async updateRebill(id: number, updateOrderDto: UpdateOrderDto) {
     const order = await this.orderRepository.findOne({where: {id}})
     order.rebillId = updateOrderDto.rebillId;

@@ -10,9 +10,6 @@ export class Order extends AppEntity {
   @Column()
   amount: number;
 
-  @Column()
-  paymentType: number;
-
   @Column({ nullable: true })
   userID: string;
 

@@ -18,19 +18,12 @@ export class OrdersController {
     if (data.Status === "CONFIRMED") {
       return this.ordersService.updateRebill(data.OrderId, data.RebillId)
     }
-    console.log(data)
   }
 
   @Get('/all')
   findAll() {
     return this.ordersService.findAll();
   }
-
-  @Get('/checkLogin')
-  async checkLogin(@Query('login') login: string) {
-    return await this.ordersService.checkLogin(login);
-  }
-
 
   @Post('/hash')
   async createHash(@Body() data) {
@@ -63,10 +56,10 @@ export class OrdersController {
 
       if (diffInDays === 7) {
         // Через неделю после первоначального платежа
-        await this.ordersService.makeRecurrentPayment(order.id, order.paymentType, order.rebillId);
+        await this.ordersService.makeRecurrentPayment(order.id, order.amount, order.rebillId);
       } else if ((diffInDays - 7) % 30 === 0) {
         // Через месяц и неделю после предыдущего платежа
-        await this.ordersService.makeRecurrentPayment(order.id, order.paymentType, order.rebillId);
+        await this.ordersService.makeRecurrentPayment(order.id, order.amount, order.rebillId);
       }
     }
   }
