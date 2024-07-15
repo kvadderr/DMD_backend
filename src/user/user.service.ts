@@ -6,6 +6,7 @@ import { UserResponse } from './type/userResponse';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './entities/user.entity';
+import { CreateStatisticDto } from 'src/statistic/dto/create-statistic.dto';
 
 @Injectable()
 export class UserService {
@@ -58,5 +59,19 @@ export class UserService {
     });
   }
 
+  async addStatistic(data: CreateStatisticDto) {
+    
+    const {userId, minutes, sessions} = data;
+  
+    const user = await this.findOne(userId);
+  
+    if (!user) {
+      throw new Error('User not found');
+    }
+  
+    user.incrementSessionsAndMinutes(minutes, sessions);
+  
+    return this.usersRepository.save(user);
+  }
 
 }

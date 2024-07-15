@@ -31,4 +31,9 @@ export class User {
   @Column({default: 0})
   countMinutes: number;
 
+  incrementSessionsAndMinutes(minutes: number, sessions: number) {
+    this.countMinutes += minutes;
+    this.countSessions += sessions;
+  }
+
 }
