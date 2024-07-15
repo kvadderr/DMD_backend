@@ -6,6 +6,7 @@ import { User } from './entities/user.entity';
 import { UserRole } from 'src/constants';
 import * as bcrypt from 'bcryptjs';
 import { Roles } from 'src/auth/decorator/roles.decorator';
+import { CreateStatisticDto } from 'src/statistic/dto/create-statistic.dto';
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
@@ -13,6 +14,11 @@ export class UserController {
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
     return this.userService.create(createUserDto);
+  }
+
+  @Post('/stat')
+  addStat(@Body() createUserDto: CreateStatisticDto) {
+    return this.userService.addStatistic(createUserDto);
   }
 
   @Get('/root')
