@@ -62,7 +62,7 @@ export class UserService {
   async addStatistic(data: CreateStatisticDto) {
     
     const {userId, minutes, sessions} = data;
-  
+    
     const user = await this.findOne(userId);
   
     if (!user) {
@@ -70,7 +70,7 @@ export class UserService {
     }
   
     user.incrementSessionsAndMinutes(minutes, sessions);
-  
+    console.log(user)
     return this.usersRepository.save(user);
   }
 
