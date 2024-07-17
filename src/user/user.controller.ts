@@ -31,7 +31,7 @@ export class UserController {
       login: process.env.ROOT_LOGIN,
       password: process.env.ROOT_PASSWORD,
     }
-    console.log(data)
+
     const hashedPassword = await bcrypt.hash(data.password, saltRounds);
     data.password = hashedPassword;
     return this.userService.create(data);
