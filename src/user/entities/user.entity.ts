@@ -31,13 +31,15 @@ export class User {
   @Column({default: 0})
   countMinutes: number;
 
-  @Column('simple-array', {nullable: true})
-  favorites: number[] = []; 
-
   incrementSessionsAndMinutes(minutes: number, sessions: number) {
     this.countMinutes += minutes;
     this.countSessions += sessions;
   }
+
+
+  @Column('simple-json', {nullable: true})
+  favorites: number[] = []; 
+
 
   toggleFavorite(favoriteId: number) {
     if (!this.favorites) {
