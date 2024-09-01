@@ -37,7 +37,7 @@ export class User {
   }
 
 
-  @Column('simple-json', {nullable: true})
+  @Column('simple-array', {nullable: true})
   favorites: number[] = []; 
 
 
