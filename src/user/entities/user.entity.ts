@@ -32,7 +32,7 @@ export class User {
   countMinutes: number;
 
   @Column('simple-array', {nullable: true})
-  favorites: number[];
+  favorites: number[] = []; 
 
   incrementSessionsAndMinutes(minutes: number, sessions: number) {
     this.countMinutes += minutes;
