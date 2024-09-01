@@ -16,6 +16,14 @@ export class UserController {
     return this.userService.create(createUserDto);
   }
 
+  @Post(':id/toggle-favorite')
+  async toggleFavorite(
+    @Param('id') userId: string,
+    @Body('favoriteId') favoriteId: number,
+  ) {
+    return this.userService.toggleFavorite(userId, favoriteId);
+  }
+
   @Post('/stat')
   addStat(@Body() createUserDto: CreateStatisticDto) {
     return this.userService.addStatistic(createUserDto);
