@@ -59,6 +59,16 @@ export class UserService {
     });
   }
 
+  async toggleFavorite(userId: string, favoriteId: number): Promise<User> {
+    const user = await this.usersRepository.findOne({ where: { id: userId } });
+    if (!user) {
+      throw new Error('User not found');
+    }
+
+    user.toggleFavorite(favoriteId);
+    return this.usersRepository.save(user);
+  }
+
   async addStatistic(data: CreateStatisticDto) {
     
     const {userId, minutes, sessions} = data;
