@@ -40,6 +40,10 @@ export class User {
   }
 
   toggleFavorite(favoriteId: number) {
+    if (!this.favorites) {
+      this.favorites = [];
+    }
+  
     const favoriteIndex = this.favorites.indexOf(favoriteId);
     if (favoriteIndex !== -1) {
       this.favorites.splice(favoriteIndex, 1);
